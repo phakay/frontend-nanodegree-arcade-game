@@ -24,14 +24,18 @@ Enemy.prototype.update = function(dt) {
         // To ensure it starts off with a different velocity after reset
         this.speed = 100 + Math.floor(Math.random() * 222);
     }
+    // check for collision with player
+    this.checkCollisions(player);
+};
 
+Enemy.prototype.checkCollisions = function(player){
     // collision detection condition here:
     if(player.x < this.x + 80 && player.x > this.x - 80 && 
         player.y < this.y + 50 && player.y > this.y - 50){
         player.reset();
     }
 
-};
+}
 
 // Draw the enemy on the screen, required method for game
 Enemy.prototype.render = function() {
